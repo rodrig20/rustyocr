@@ -1,7 +1,7 @@
 # Maintainer: rodrig20
 pkgname=rustyocr
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Rust-based tool that captures text from the screen using OCR"
 arch=('x86_64')
 url="https://github.com/rodrig20/rustyocr"
@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 build() {
     cd "$srcdir/rustyocr-$pkgver"
     cargo build --release
-}pkgver
+}
 
 package() {
     cd "$srcdir/rustyocr-$pkgver"
