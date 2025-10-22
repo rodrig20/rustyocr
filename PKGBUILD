@@ -1,23 +1,22 @@
 # Maintainer: rodrig20
 pkgname=rustyocr
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A Rust-based tool that captures text from the screen using OCR"
 arch=('x86_64')
 url="https://github.com/rodrig20/rustyocr"
 license=('MIT')
 depends=('tesseract' 'tesseract-data-eng' 'grim' 'slurp' 'wl-clipboard')
 makedepends=('rust' 'cargo')
-source=("https://github.com/rodrig20/rustyocr/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+options=(!strip)
 
 build() {
-    cd "$srcdir/rustyocr-$pkgver"
+    cd $srcdir
     cargo build --release
 }
 
 package() {
-    cd "$srcdir/rustyocr-$pkgver"
+    cd $srcdir/..
     install -Dm755 target/release/rustyocr "$pkgdir/usr/bin/rustyocr"
-    install -Dm644 LICENrustyOCRSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
